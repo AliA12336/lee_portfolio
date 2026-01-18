@@ -70,11 +70,11 @@ export const AboutPage = () => {
 					work. Then I work with the client’s team or help select contracted
 					vendors to cost-effectively produce the desired item.
 				</p>
-                <br />
-					<br />
-                <Separator />
-                <br />
-					<br />
+				<br />
+				<br />
+				<Separator />
+				<br />
+				<br />
 			</div>
 		</>
 	);
