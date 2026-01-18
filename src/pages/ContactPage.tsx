@@ -19,13 +19,13 @@ export const ContactPage = () => {
                 <br />
                 <div>
                     <p>LinkedIn:
-                    <a className="underline ml-1 md:ml-50" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/robertleeadams</a> 
+                    <a className="underline ml-1 md:ml-25" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/robertleeadams</a> 
                     </p>
                 </div>
                 <br />
                 <div>
                     <p>Email:
-                    <span className="ml-1 md:ml-55">rmladams25@gmail.com</span>
+                    <span className="ml-1 md:ml-30">rmladams25@gmail.com</span>
                     </p>
                 </div>
                 <br />
