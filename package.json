@@ -12,13 +12,17 @@
 	},
 	"dependencies": {
 		"@radix-ui/react-navigation-menu": "^1.2.14",
+		"@radix-ui/react-separator": "^1.1.8",
+		"@radix-ui/react-slot": "^1.2.4",
 		"@tailwindcss/vite": "^4.1.18",
 		"@tanstack/react-router": "^1.150.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"embla-carousel-react": "^8.6.0",
 		"lucide-react": "^0.562.0",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",
+		"react-resizable-panels": "^4.4.1",
 		"tailwind-merge": "^3.4.0",
 		"tailwindcss": "^4.1.18"
 	},
