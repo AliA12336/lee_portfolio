@@ -1,20 +1,24 @@
-type ImageModule = {
+import projects from "../images.json";
+
+type Module = {
 	default: string;
 };
 
-const potpourriFiles= import.meta.glob<ImageModule>(
+const potpourriFiles = import.meta.glob<Module>(
 	"/src/assets/images/potpourri/**/*.{png,jpg,jpeg,webp,svg}",
 	{ eager: true },
 );
 
-export const galleryImages = Object.entries(potpourriFiles).map(([path, module]) => {
-	const parts = path.split("/");
-	const folder = parts[parts.length - 2];
-	const filename = parts[parts.length - 1];
+export const galleryImages = Object.entries(potpourriFiles).map(
+	([path, module]) => {
+		const parts = path.split("/");
+		const folder = parts[parts.length - 2];
+		const filename = parts[parts.length - 1];
 
-	return {
-		folder,
-		src: module.default,
-		alt: filename,
-	};
-});
+		return {
+			folder,
+			src: module.default,
+			alt: filename,
+		};
+	},
+);

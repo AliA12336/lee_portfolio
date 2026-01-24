@@ -1,13 +1,79 @@
-import { Outlet } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Separator } from "@/components/ui/separator";
+import { projectRoute } from "@/router";
+import projImages from "../images.json";
 
-//grid layout with li components to the left that track the placement of the projects text (link component)
-// separator line
-// flex layout of furniture
+type ImageMeta = {
+	folder: string;
+	meta: any;
+	png?: string[];
+	jpg?: string[];
+};
 
 export const ProjectsPage = () => {
-	<>
-		<h1>placeholder</h1>
-		<Outlet />
-	</>;
+	const modules = import.meta.glob<{ default: string }>(
+		"/src/assets/images/**/*.{png,jpg,jpeg,webp,svg}",
+		{ eager: true },
+	);
+
+	const projs = projImages.map((folder: ImageMeta) => {
+		const allFiles: string[] = [];
+
+		["png"].forEach((ext) => {
+			const files = (folder as any)[ext];
+			if (!files) return;
+
+			files.forEach((file: string) => {
+				const pathKey = `/src/assets/images/${folder.folder}/${file}`;
+
+				const mod = (modules as Record<string, { default: string }>)[pathKey];
+				if (mod) allFiles.push(mod.default);
+			});
+		});
+
+		return {
+			folder: folder.folder,
+			meta: folder.meta,
+			images: allFiles,
+		};
+	});
+
+	return (
+		<div className="flex">
+			<div className="hidden md:flex md:flex-col w-1/8 gap-2 mt-20 text-[#dfdedf]">
+				{projs.map((proj) => (
+					<Link
+						key={proj.meta.title}
+						to={projectRoute.to}
+						params={{ project: proj.meta.title }}
+					>
+						{proj.meta.title}
+					</Link>
+				))}
+			</div>
+			<div className="flex-1">
+				<Separator className="mb-8" />
+				<div className="grid grid-cols-2 gap-4">
+					{projs.map((proj) =>
+						proj.images.map((src) => (
+							<div key={src} className="inline-block">
+								<Link
+									key={src}
+									to={projectRoute.to}
+									params={{ project: proj.meta.title }}
+									className="inline-block"
+								>
+									<img
+										src={src}
+										alt={proj.meta.title}
+										className="w-full max-w-xs rounded-lg"
+									/>
+								</Link>
+							</div>
+						)),
+					)}
+				</div>
+			</div>
+		</div>
+	);
 };

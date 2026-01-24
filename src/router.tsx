@@ -12,12 +12,10 @@ import { PotpourriPage as Potpourri } from "./pages/PotpourriPage";
 import { ProjectPage as Project } from "./pages/ProjectPage";
 import { ProjectsPage as Projects } from "./pages/ProjectsPage";
 
-/* Root layout */
 const rootRoute = createRootRoute({
 	component: App,
 });
 
-/* Routes */
 const indexRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: "/",
@@ -48,27 +46,25 @@ const projectsRoute = createRoute({
 	component: Projects,
 });
 
-const projectRoute = createRoute({
-	getParentRoute: () => projectsRoute,
-	path: "/$project",
+export const projectRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "/projects/$project",
 	component: Project,
 });
 
-/* Route tree */
 const routeTree = rootRoute.addChildren([
 	indexRoute,
 	aboutRoute,
 	contactRoute,
 	potpourriRoute,
-	projectsRoute.addChildren([projectRoute]),
+	projectsRoute,
+	projectRoute,
 ]);
 
-/* Router */
 export const router = createRouter({
 	routeTree,
 });
 
-/* Type registration (IMPORTANT for TS) */
 declare module "@tanstack/react-router" {
 	interface Register {
 		router: typeof router;
