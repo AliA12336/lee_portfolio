@@ -21,30 +21,30 @@ export const ProjectsPage = () => {
 			<div className="flex-1 flex justify-center">
 				<div className="w-full max-w-6xl">
 					<div className="mx-auto w-fit">
-				<Separator className="mb-8" />
-				<div className="grid grid-cols-2 gap-x-4 lg:gap-x-50 lg:gap-y-4 justify-items-center items-center">
-					{projs.map((proj) =>
-						proj.png.map((src) => (
-							<div key={src} className="inline-block">
-								<Link
-									key={src}
-									to={projectRoute.to}
-									params={{ project: proj.meta.title }}
-									className="inline-block"
-								>
-									<div className="md:w-70 aspect-[4/5] overflow-hidden">
-									<img
-										src={src}
-										alt={proj.meta.title}
-										className="w-full h-full object-contain"
-									/>
+						<Separator className="mb-8" />
+						<div className="grid grid-cols-2 gap-x-4 lg:gap-x-50 lg:gap-y-4 justify-items-center items-center">
+							{projs.map((proj) =>
+								proj.png.map((src) => (
+									<div key={src} className="inline-block">
+										<Link
+											key={src}
+											to={projectRoute.to}
+											params={{ project: proj.meta.title }}
+											className="inline-block"
+										>
+											<div className="md:w-70 aspect-[4/5] overflow-hidden">
+												<img
+													src={src}
+													alt={proj.meta.title}
+													className="w-full h-full object-contain"
+												/>
+											</div>
+										</Link>
 									</div>
-								</Link>
-							</div>
-						)),
-					)}
-				</div>
-				</div>
+								)),
+							)}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
