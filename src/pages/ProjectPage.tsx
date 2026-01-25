@@ -28,7 +28,10 @@ export const ProjectPage = () => {
 		images.find((image) => image.meta.title === project) || createProject();
 
 	return (
-		<Carousel opts={{ align: "center", watchDrag: false, loop: true }} className="w-full">
+		<Carousel
+			opts={{ align: "center", watchDrag: false, loop: true }}
+			className="w-full"
+		>
 			<CarouselContent className="gap-4">
 				<CarouselItem className="basis-auto max-w-[90vw] sm:max-w-xs md:max-w-md">
 					<div className="h-[70vh] flex justify-center px-4">
@@ -50,14 +53,14 @@ export const ProjectPage = () => {
 								className="h-1/2 w-auto rounded-lg object-contain"
 							/>
 						))}
-							{projectImages.glb.map((src) => (
-								<img
-            key={src}
-            src={src}
-            alt={src}
-            className="h-1/2 w-auto rounded-lg object-contain"
-          />
-							))}
+						{projectImages.glb.map((src) => (
+							<img
+								key={src}
+								src={src}
+								alt={src}
+								className="h-1/2 w-auto rounded-lg object-contain"
+							/>
+						))}
 					</div>
 				</CarouselItem>
 				{projectImages.jpg.map((src) => (
