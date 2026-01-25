@@ -14,7 +14,7 @@ const Gallery = ({
 	setIndex: Dispatch<SetStateAction<number>>;
 }) => {
 	return (
-		<section className="py-4 lg:py-24">
+		<section className="py-8">
 			<div className="flex flex-wrap justify-center gap-6">
 				{images.map((image, i) => (
 					<Button
