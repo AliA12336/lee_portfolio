@@ -9,6 +9,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
 import images from "../images.json";
+import { ModelViewer } from "@/components/ModelViewer";
 
 const createProject = () => ({
 	folder: "",
@@ -54,11 +55,10 @@ export const ProjectPage = () => {
 							/>
 						))}
 						{projectImages.glb.map((src) => (
-							<img
+							<ModelViewer
 								key={src}
-								src={src}
-								alt={src}
-								className="h-1/2 w-auto rounded-lg object-contain"
+								url={src}
+								className="h-1/2 w-auto rounded-lg object-contain "
 							/>
 						))}
 					</div>
