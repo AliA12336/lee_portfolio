@@ -30,7 +30,7 @@ export const ProjectPage = () => {
 	return (
 		<Carousel
 			opts={{ align: "center", watchDrag: false, loop: true }}
-			className="w-full"
+			className="w-full relative"
 		>
 			<CarouselContent className="gap-4">
 				<CarouselItem className="basis-auto max-w-[90vw] sm:max-w-xs md:max-w-md">
@@ -76,8 +76,8 @@ export const ProjectPage = () => {
 				))}
 			</CarouselContent>
 
-			<CarouselPrevious className="flex" />
-			<CarouselNext className="flex" />
+			<CarouselPrevious className="absolute top-1/2 left-2 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 text-white rounded-full p-2" />
+			<CarouselNext className="absolute top-1/2 right-2 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 text-white rounded-full p-2" />
 			<Separator className="mt-8" />
 		</Carousel>
 	);
