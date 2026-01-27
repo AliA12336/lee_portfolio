@@ -10,7 +10,7 @@ export const AboutPage = () => {
 				alt="Lee Adams"
 			></img>
 			<div className="text-[#dfdedf]">
-				<h2 className="text-center md:text-left text-4xl">Design Philosophy</h2>
+				<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
 				<br />
 				<br />
 				<p className="text-justify">

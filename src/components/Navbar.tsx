@@ -18,7 +18,7 @@ export const Navbar = () => {
 						to="/"
 						className="hover:bg-transparent hover:text-inherit md:m-2"
 					>
-						<img className="md:h-20 w-auto" src={logo} alt="Logo" />
+						<img className="sm:h-20 w-auto" src={logo} alt="Logo" />
 					</Link>
 				</NavigationMenuItem>
 				{navItems.map((navItem) => {

@@ -51,7 +51,7 @@ export const ProjectsPage = () => {
 				</div>
 			</div>
 			<Button
-				className="hover:bg-transparent fixed bottom-11 right-12 -translate-x-1/2 bg-transparent p-3 hidden sm:block"
+				className="hover:bg-transparent fixed bottom-11 right-12 -translate-x-1/2 bg-transparent p-3 hidden md:block"
 				onClick={() =>
 					window.scrollBy({ top: -scrollAmount, behavior: "smooth" })
 				}
@@ -59,7 +59,7 @@ export const ProjectsPage = () => {
 				<MoveUp className="!w-6 !h-6" />
 			</Button>
 			<Button
-				className="hover:bg-transparent fixed bottom-4 right-12 -translate-x-1/2 bg-transparent p-3 hidden sm:block"
+				className="hover:bg-transparent fixed bottom-4 right-12 -translate-x-1/2 bg-transparent p-3 hidden md:block"
 				onClick={() =>
 					window.scrollBy({ top: scrollAmount, behavior: "smooth" })
 				}

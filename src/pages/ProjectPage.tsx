@@ -1,4 +1,5 @@
 import { useParams } from "@tanstack/react-router";
+import { ModelViewer } from "@/components/ModelViewer";
 import {
 	Carousel,
 	CarouselContent,
@@ -9,7 +10,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
 import images from "../images.json";
-import { ModelViewer } from "@/components/ModelViewer";
 
 const createProject = () => ({
 	folder: "",
@@ -45,7 +45,7 @@ export const ProjectPage = () => {
 					</div>
 				</CarouselItem>
 				<CarouselItem className="basis-auto">
-					<div className="h-[70vh] flex flex-row md:flex-col justify-between px-4 gap-4">
+					<div className="h-[70vh] flex flex-row sm:flex-col justify-between px-4 gap-4">
 						{projectImages.png.map((src) => (
 							<img
 								key={src}
