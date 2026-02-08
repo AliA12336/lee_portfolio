@@ -28,47 +28,47 @@ const RANDOMMAX = 50;
 
 function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 	const furnitureRef = useRef<RapierRigidBody | null>(null);
-    const dragging = useRef(false)
-    const dragTarget = useRef(new THREE.Vector3());
-    const dragPlane = useRef(new THREE.Plane(new THREE.Vector3(0,1,0), 0))
+	const dragging = useRef(false);
+	const dragTarget = useRef(new THREE.Vector3());
+	const dragPlane = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 	const gltf = useGLTF(glbPath);
 	const spawnHeight = 250;
 	const groundPos = -1000;
-    const { camera, mouse, raycaster } = useThree();
+	const { camera, mouse, raycaster } = useThree();
 
-    const handlePointerDown = (e) => {
-  e.stopPropagation()
-  dragging.current = true
-  furnitureRef.current.setBodyType(RigidBodyType.KinematicVelocityBased, true)
-  furnitureRef.current.setGravityScale(0, true)
-  const current =furnitureRef.current.translation()
-  const currentVec3 = new THREE.Vector3(current.x, current.y, current.z)
+	const handlePointerDown = (e) => {
+		e.stopPropagation();
+		dragging.current = true;
+		furnitureRef.current.setBodyType(
+			RigidBodyType.KinematicVelocityBased,
+			true,
+		);
+		furnitureRef.current.setGravityScale(0, true);
+		const current = furnitureRef.current.translation();
+		const currentVec3 = new THREE.Vector3(current.x, current.y, current.z);
 
-  dragPlane.current.setFromNormalAndCoplanarPoint(
-    camera.getWorldDirection(new THREE.Vector3()).negate(),
-    currentVec3
-  )
-}
+		dragPlane.current.setFromNormalAndCoplanarPoint(
+			camera.getWorldDirection(new THREE.Vector3()).negate(),
+			currentVec3,
+		);
+	};
 
-const handlePointerUp = (e) => {
-  dragging.current = false
-  furnitureRef.current.setGravityScale(1, true)
-  furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true)
-}
+	const handlePointerUp = (e) => {
+		dragging.current = false;
+		furnitureRef.current.setGravityScale(1, true);
+		furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
+	};
 
-      useFrame(() => {
-    if (!dragging.current) return
+	useFrame(() => {
+		if (!dragging.current) return;
 
-    raycaster.setFromCamera(mouse, camera)
-    raycaster.ray.intersectPlane(
-      dragPlane.current,
-      dragTarget.current
-    )
-  })
+		raycaster.setFromCamera(mouse, camera);
+		raycaster.ray.intersectPlane(dragPlane.current, dragTarget.current);
+	});
 
 	useFrame(({ camera }) => {
 		if (!furnitureRef.current || dragging.current) return;
-        console.log("camera and not dragging(?)", dragging.current)
+		console.log("camera and not dragging(?)", dragging.current);
 
 		const { y } = furnitureRef.current.translation();
 
@@ -115,23 +115,23 @@ const handlePointerUp = (e) => {
 		}
 	});
 
-    useFrame(() => {
-        if (!dragging.current || !furnitureRef.current) return 
+	useFrame(() => {
+		if (!dragging.current || !furnitureRef.current) return;
 
-        const current = furnitureRef.current.translation();
-        const target = dragTarget.current;
-        raycaster.setFromCamera(mouse, camera)
-  raycaster.ray.intersectPlane(dragPlane.current, dragTarget.current)
+		const current = furnitureRef.current.translation();
+		const target = dragTarget.current;
+		raycaster.setFromCamera(mouse, camera);
+		raycaster.ray.intersectPlane(dragPlane.current, dragTarget.current);
 
-        furnitureRef.current.setLinvel(
-    {
-      x: (target.x - current.x) * 10,
-      y: (target.y - current.y) * 10,
-      z: 0,
-    },
-    true
-  )
-    })
+		furnitureRef.current.setLinvel(
+			{
+				x: (target.x - current.x) * 10,
+				y: (target.y - current.y) * 10,
+				z: 0,
+			},
+			true,
+		);
+	});
 
 	return (
 		<DragControls
@@ -139,20 +139,20 @@ const handlePointerUp = (e) => {
 			tranformGroup={false}
 			// onDragStart={() => {
 			// 	if (furnitureRef.current) {
-            //         dragging.current = true;
+			//         dragging.current = true;
 			// 		furnitureRef.current.setBodyType(
 			// 			RigidBodyType.KinematicVelocityBased,
 			// 			true,
 			// 		);
-            //         furnitureRef.current.setGravityScale(0, true)
-            //         furnitureRef.current.setLinvel({ x: 0, y: 0, z: 0}, true)
-            //         dragPlane.current.set(new THREE.Vector3(0, 1, 0), -furnitureRef.current.translation().y)
+			//         furnitureRef.current.setGravityScale(0, true)
+			//         furnitureRef.current.setLinvel({ x: 0, y: 0, z: 0}, true)
+			//         dragPlane.current.set(new THREE.Vector3(0, 1, 0), -furnitureRef.current.translation().y)
 			// 	}
 			// }}
 			// onDragEnd={() => {
 			// 	if (furnitureRef.current) {
-            //         dragging.current = false; 
-            //         furnitureRef.current.setGravityScale(1, true);
+			//         dragging.current = false;
+			//         furnitureRef.current.setGravityScale(1, true);
 			// 		furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
 			// 	}
 			// }}
@@ -165,7 +165,11 @@ const handlePointerUp = (e) => {
 				angularVelocity={[0.3, 0.3, 0]}
 				position={initialPosition}
 			>
-				<primitive object={gltf.scene} onPointerUp={handlePointerUp} onPointerDown={handlePointerDown}/>
+				<primitive
+					object={gltf.scene}
+					onPointerUp={handlePointerUp}
+					onPointerDown={handlePointerDown}
+				/>
 			</RigidBody>
 		</DragControls>
 	);

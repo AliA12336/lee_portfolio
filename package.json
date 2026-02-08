@@ -12,6 +12,7 @@
 		"prebuild": "node src/scripts/generate-images.mjs"
 	},
 	"dependencies": {
+		"@dimforge/rapier3d-compat": "^0.19.3",
 		"@radix-ui/react-navigation-menu": "^1.2.14",
 		"@radix-ui/react-separator": "^1.1.8",
 		"@radix-ui/react-slot": "^1.2.4",
