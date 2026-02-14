@@ -2,7 +2,7 @@ import { RigidBodyType } from "@dimforge/rapier3d-compat";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { type RapierRigidBody, RigidBody } from "@react-three/rapier";
-import { useEffect, useRef, type RefObject } from "react";
+import { type RefObject, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { getRandomIntInclusive } from "./TestScene";
 
@@ -15,8 +15,12 @@ type FallingCubeProps = {
 const RANDOMMIN = -50;
 const RANDOMMAX = 50;
 
-// TODO Clean this function up 
-export const Furniture = ({ initialPosition, canvasRef, glbPath }: FallingCubeProps) => {
+// TODO Clean this function up
+export const Furniture = ({
+	initialPosition,
+	canvasRef,
+	glbPath,
+}: FallingCubeProps) => {
 	const furnitureRef = useRef<RapierRigidBody | null>(null);
 	const dragging = useRef(false);
 	const dragTarget = useRef(new THREE.Vector3());
@@ -27,7 +31,7 @@ export const Furniture = ({ initialPosition, canvasRef, glbPath }: FallingCubePr
 	const { camera, mouse, raycaster } = useThree();
 
 	const handlePointerDown = (e: MouseEvent) => {
-        if (!furnitureRef.current) return;
+		if (!furnitureRef.current) return;
 		e.stopPropagation();
 		dragging.current = true;
 		furnitureRef.current.setBodyType(
@@ -147,4 +151,4 @@ export const Furniture = ({ initialPosition, canvasRef, glbPath }: FallingCubePr
 			<primitive object={gltf.scene} onPointerDown={handlePointerDown} />
 		</RigidBody>
 	);
-}
+};

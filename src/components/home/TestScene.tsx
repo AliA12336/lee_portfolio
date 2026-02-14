@@ -8,7 +8,7 @@ export const getRandomIntInclusive = (min: number, max: number) => {
 	const minCeiled = Math.ceil(min);
 	const maxFloored = Math.floor(max);
 	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
-}
+};
 
 const RANDOMMIN = -50;
 const RANDOMMAX = 50;
