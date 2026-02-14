@@ -1,8 +1,8 @@
 import { RigidBodyType } from "@dimforge/rapier3d-compat";
-import { DragControls, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics, type RapierRigidBody, RigidBody } from "@react-three/rapier";
-import { type RefObject, Suspense, useRef } from "react";
+import { type RefObject, Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 import furnitures from "../../images.json";
 
@@ -53,11 +53,20 @@ function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 		);
 	};
 
-	const handlePointerUp = (e) => {
-		dragging.current = false;
-		furnitureRef.current.setGravityScale(1, true);
-		furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
-	};
+	useEffect(() => {
+  const release = () => {
+    if (!dragging.current || !furnitureRef.current) return
+
+    dragging.current = false
+
+    furnitureRef.current.setGravityScale(1, true)
+    furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true)
+  }
+
+  window.addEventListener("pointerup", release)
+  return () => window.removeEventListener("pointerup", release)
+}, [])
+
 
 	useFrame(() => {
 		if (!dragging.current) return;
@@ -134,29 +143,6 @@ function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 	});
 
 	return (
-		<DragControls
-			objects={furnitureRef.current ? [furnitureRef.current] : []}
-			tranformGroup={false}
-			// onDragStart={() => {
-			// 	if (furnitureRef.current) {
-			//         dragging.current = true;
-			// 		furnitureRef.current.setBodyType(
-			// 			RigidBodyType.KinematicVelocityBased,
-			// 			true,
-			// 		);
-			//         furnitureRef.current.setGravityScale(0, true)
-			//         furnitureRef.current.setLinvel({ x: 0, y: 0, z: 0}, true)
-			//         dragPlane.current.set(new THREE.Vector3(0, 1, 0), -furnitureRef.current.translation().y)
-			// 	}
-			// }}
-			// onDragEnd={() => {
-			// 	if (furnitureRef.current) {
-			//         dragging.current = false;
-			//         furnitureRef.current.setGravityScale(1, true);
-			// 		furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
-			// 	}
-			// }}
-		>
 			<RigidBody
 				ref={furnitureRef}
 				colliders="cuboid"
@@ -167,11 +153,9 @@ function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 			>
 				<primitive
 					object={gltf.scene}
-					onPointerUp={handlePointerUp}
 					onPointerDown={handlePointerDown}
 				/>
 			</RigidBody>
-		</DragControls>
 	);
 }
 
@@ -185,7 +169,7 @@ export const TestScene = () => {
 			<Canvas camera={{ position: [0, 0, 300] }}>
 				<ambientLight intensity={0.1} />
 				<directionalLight color="#dfdedf" position={[0, 0, 5]} />
-				<Suspense>
+				<Suspense fallback={null}>
 					<Physics gravity={[gravity, -20, 0]} debug>
 						{projects.map((project) => {
 							return (
