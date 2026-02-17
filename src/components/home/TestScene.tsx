@@ -9,7 +9,7 @@ export const getRandomIntInclusive = (min: number, max: number) => {
 	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 };
 
-export const TestScene = () => {
+export const FallingFurnitureScene = () => {
 	const canvasRef = useRef<HTMLDivElement>(null);
 
 	return (
