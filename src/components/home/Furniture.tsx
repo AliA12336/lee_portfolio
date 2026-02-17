@@ -14,6 +14,7 @@ type FallingCubeProps = {
 
 const RANDOMMIN = -50;
 const RANDOMMAX = 50;
+const SPAWNHEIGHT = 250;
 
 // TODO Clean this function up
 export const Furniture = ({
@@ -26,7 +27,7 @@ export const Furniture = ({
 	const dragTarget = useRef(new THREE.Vector3());
 	const dragPlane = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 	const gltf = useGLTF(glbPath);
-	const spawnHeight = 250;
+	
 	const groundPos = -1000;
 	const { camera, mouse, raycaster } = useThree();
 
@@ -63,7 +64,7 @@ export const Furniture = ({
 		furnitureRef.current.setTranslation(
     {
       x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX),
-      y: 250 + index * 250,
+      y: SPAWNHEIGHT + index * 250,
       z: 0
     },
     true
@@ -110,7 +111,7 @@ export const Furniture = ({
 				height = rect.height;
 			}
 
-			const distance = spawnHeight - camera.position.y;
+			const distance = SPAWNHEIGHT - camera.position.y;
 			const fov = camera.fov;
 			const aspect = width / height;
 			const visibleHeight = 2 * distance * Math.tan((fov * Math.PI) / 180 / 2);
@@ -120,7 +121,7 @@ export const Furniture = ({
 			furnitureRef.current.setTranslation(
 				{
 					x: randomX,
-					y: spawnHeight,
+					y: SPAWNHEIGHT,
 					z: 0,
 				},
 				true,
