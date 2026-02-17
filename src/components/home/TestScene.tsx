@@ -13,7 +13,7 @@ export const TestScene = () => {
 	const canvasRef = useRef<HTMLDivElement>(null);
 
 	return (
-		<div className="h-screen w-full" ref={canvasRef}>
+		<div className="h-screen w-full touch-none" ref={canvasRef}>
 			<Canvas camera={{ position: [0, 0, 300] }}>
 				<ambientLight intensity={0.1} />
 				<directionalLight color="#dfdedf" position={[0, 0, 5]} />
