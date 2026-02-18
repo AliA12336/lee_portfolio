@@ -43,7 +43,7 @@ export const ProjectsPage = () => {
 												/>
 
 												<div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-65">
-													<h3 className="text-white font-semibold text-center px-2">
+													<h3 className="text-white font-semibold text-center px-2 text-4xl">
 														{proj.meta.title}
 													</h3>
 												</div>
