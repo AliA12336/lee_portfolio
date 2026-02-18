@@ -33,14 +33,20 @@ export const ProjectsPage = () => {
 											key={src}
 											to={projectRoute.to}
 											params={{ project: proj.meta.title }}
-											className="inline-block"
+											className="inline-block group"
 										>
-											<div className="md:w-70 aspect-[4/5] overflow-hidden">
+											<div className="md:w-70 aspect-[4/5] relative overflow-hidden">
 												<img
 													src={src}
 													alt={proj.meta.title}
-													className="w-full h-full object-contain"
+													className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-95"
 												/>
+
+												<div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-65">
+													<h3 className="text-white font-semibold text-center px-2">
+														{proj.meta.title}
+													</h3>
+												</div>
 											</div>
 										</Link>
 									</div>
