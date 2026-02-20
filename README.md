@@ -70,7 +70,8 @@ You should see after it runs something that says `images.json generated, ignorin
 
 ## License
 
-This project is open source under the [MIT License](LICENSE).
+- **Code** [MIT License](./LICENSE).
+- **Assets** All Rights Reserved ([LICENSE-ASSETS](./LICENSE-ASSETS))
 
 ---
 
