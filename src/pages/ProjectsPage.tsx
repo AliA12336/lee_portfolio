@@ -3,7 +3,7 @@ import { MoveDown, MoveUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
-import projs from "../images.json";
+import { projs } from "../assets/images";
 
 export const ProjectsPage = () => {
 	const scrollAmount = 1500;

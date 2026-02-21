@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
-import images from "../images.json";
+import { projs as images } from "../assets/images";
 
 const createProject = () => ({
 	folder: "",

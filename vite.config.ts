@@ -13,6 +13,7 @@ export default defineConfig(({ command }) => ({
 		react(),
 		tailwindcss(),
 	],
+	assetsInclude: ["**/*.glb"],
 	base: command === "build" ? "/lee_portfolio/" : "/",
 	resolve: {
 		alias: {

@@ -44,7 +44,8 @@ pnpm dev
 1. Inside [src/assets/images](src/assets/images) create a new folder prefixed with a number and the title of the project
 2. Drag and drop the jpgs, png, and glb into the newly created folder
 3. Create a meta.json file and insert a title and description in the format similar to the below example 
-```bash{
+```bash
+{
 	"title": "Seville",
 	"description": "Seville’s modern style is designed to appeal to a broad audience through its configurable nature and clean form that allows it to take to various finishes."
 }
@@ -55,7 +56,7 @@ pnpm dev
 ### Adding potpourri images
 1. Inside [src/assets/images/potpourri](src/assets/images/potpourri) drag and drop a jpg file in this file location 
 2. Run script by opening up a new terminal and running the command `pnpm prebuild`
-You should see after it runs something that says `images.json generated, ignoring folders:`...
+You should see after it runs something that says `images.ts array module generated successfully!`...
 
 ### Adding models
 1. Inside [src/assets/models](src/assets/models) drag and drop a glb file in this file location
