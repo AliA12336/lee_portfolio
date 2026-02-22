@@ -1,10 +1,17 @@
 import { Separator } from "@/components/ui/separator";
 import profilePic from "../assets/images/DSC_9635.jpg";
 
+export const TestIds = {
+	header: "header",
+	bioPic: "bio-pic",
+	about: "about-paragraphs",
+	separator: "bottom-separator"
+}
+
 export const AboutPage = () => {
 	return (
 		<div className="text-[#dfdedf] w-5/6 mx-auto">
-			<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
+			<h2 className="text-center sm:text-left text-4xl" data-testid={TestIds.header}>Design Philosophy</h2>
 			<br />
 			<div className="text-justify sm:flex sm:flex-row-reverse">
 				<div>
@@ -12,9 +19,10 @@ export const AboutPage = () => {
 						className="mb-4 md:mb-0 float-right mt-4 object-cover"
 						src={profilePic}
 						alt="Lee Adams"
+						data-testid={TestIds.bioPic}
 					/>
 				</div>
-				<div className="mr-8">
+				<div className="mr-8" data-testid={TestIds.about}>
 					<b>About</b>
 					<br />
 					<br />I am an American industrial designer trained in both traditional
@@ -74,7 +82,7 @@ export const AboutPage = () => {
 			</div>
 			<br />
 			<br />
-			<Separator />
+			<Separator data-testid={TestIds.separator} />
 			<br />
 			<br />
 		</div>
