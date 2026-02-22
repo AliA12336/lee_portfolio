@@ -5,13 +5,18 @@ export const TestIds = {
 	header: "header",
 	bioPic: "bio-pic",
 	about: "about-paragraphs",
-	separator: "bottom-separator"
-}
+	separator: "bottom-separator",
+};
 
 export const AboutPage = () => {
 	return (
 		<div className="text-[#dfdedf] w-5/6 mx-auto">
-			<h2 className="text-center sm:text-left text-4xl" data-testid={TestIds.header}>Design Philosophy</h2>
+			<h2
+				className="text-center sm:text-left text-4xl"
+				data-testid={TestIds.header}
+			>
+				Design Philosophy
+			</h2>
 			<br />
 			<div className="text-justify sm:flex sm:flex-row-reverse">
 				<div>

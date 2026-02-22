@@ -1,8 +1,8 @@
 import {
+	createHashHistory,
 	createRootRoute,
 	createRoute,
 	createRouter,
-	createHashHistory
 } from "@tanstack/react-router";
 
 import App from "./App";

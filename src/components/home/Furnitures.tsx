@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import { projs as furnitures } from "../../assets/images"
+import { projs as furnitures } from "../../assets/images";
 import { modelPaths } from "../../scripts/convertImages";
 import { Furniture } from "./Furniture";
 
