@@ -27,11 +27,20 @@ describe("AboutPage", () => {
 		expect(servicesParagraph).toBeInTheDocument();
 	});
 
-    it("expects linkedinlinktext to be corret url", () => {
+    it("expects linkedin link text to be corret url", () => {
         render(<ContactPage />);
 
 		const linkedInLink = screen.getByTestId(TestIds.linkedInLink);
+
         expect(linkedInLink).toHaveTextContent("https://www.linkedin.com/in/robertleeadams")
         expect(linkedInLink).toHaveAttribute('href', 'https://www.linkedin.com/in/robertleeadams')
+    })
+
+    it("expects email to be correct address", () => {
+        render(<ContactPage />);
+
+        const emailLink = screen.getByTestId(TestIds.emailLink);
+        
+        expect(emailLink).toHaveTextContent("rmladams25@gmail.com");
     })
 });
