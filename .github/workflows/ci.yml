@@ -30,4 +30,4 @@ jobs:
         run: pnpm run build
 
 
-# Test and Deploy Steps
+# Format Test and Deploy Steps
