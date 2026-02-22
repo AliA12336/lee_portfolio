@@ -6,7 +6,7 @@ export const AboutPage = () => {
 		<div className="text-[#dfdedf] w-5/6 mx-auto">
 			<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
 			<br />
-			<p className="text-justify sm:flex sm:flex-row-reverse">
+			<div className="text-justify sm:flex sm:flex-row-reverse">
 				<div>
 					<img
 						className="mb-4 md:mb-0 float-right mt-4 object-cover"
@@ -71,7 +71,7 @@ export const AboutPage = () => {
 					work. Then I work with the client’s team or help select contracted
 					vendors to cost-effectively produce the desired item.
 				</div>
-			</p>
+			</div>
 			<br />
 			<br />
 			<Separator />
